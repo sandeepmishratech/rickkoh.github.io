@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-index-js",
+    "path": "/",
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"id":"50add235-2d66-5cb6-9558-02c1fd378118","frontmatter":{"date":"September 19, 2021","path":"coming-soon","title":"Coming soon","description":"nothing here","color":"#1099A8"}}}]}},"pageContext":{}},
+    "staticQueryHashes": []}
