@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-index-js",
     "path": "/",
-    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"id":"50add235-2d66-5cb6-9558-02c1fd378118","frontmatter":{"date":"September 19, 2021","path":"coming-soon","title":"Coming soon","description":"nothing here","color":"#1099A8"}}}]}},"pageContext":{}},
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"id":"61d5d00f-62a7-5dc1-94b5-6a980d8c2b79","frontmatter":{"date":"September 16, 2021","path":"coding-the-self-balancing-binary-search-tree-avl-dev","title":"Coding the self balancing binary search tree (AVL)","description":"A C++ console application that allows users to visualise the AVL (Adelson-Velsky and Landis) binary search tree. Attempt to learn an advanced data structure as well as recursion. Includes a working program.","color":"#1099A8"}}}]}},"pageContext":{}},
     "staticQueryHashes": []}

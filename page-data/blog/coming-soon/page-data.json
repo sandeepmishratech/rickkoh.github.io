@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-pages-blog-markdown-remark-frontmatter-path-js",
-    "path": "/blog/coming-soon/",
-    "result": {"data":{"markdownRemark":{"id":"50add235-2d66-5cb6-9558-02c1fd378118","html":"<deckgo-highlight-code language=\"python\" terminal=\"carbon\" theme=\"blackboard\"  >\n          <code slot=\"code\">print(&#39;coming soon...&#39;)</code>\n        </deckgo-highlight-code>","frontmatter":{"title":"Coming soon","date":"September 19, 2021"}}},"pageContext":{"id":"50add235-2d66-5cb6-9558-02c1fd378118","frontmatter__path":"coming-soon","__params":{"frontmatter__path":"coming-soon"}}},
-    "staticQueryHashes": []}

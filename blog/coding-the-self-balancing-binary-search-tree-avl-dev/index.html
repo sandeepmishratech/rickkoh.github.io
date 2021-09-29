@@ -1,0 +1,470 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.75e4312cd8697ebee4ff.css" data-identity="gatsby-global-css">#md .back{align-self:flex-start;color:#36b;font-size:16px;justify-self:flex-start;margin:24px 0;vertical-align:5%}#md .back:hover{text-decoration:none}#md .date{align-self:flex-start;color:#a9a9a9;font-style:oblique;justify-self:flex-start}#md .title{font-weight:700}#md h1,#md h2,#md h3,#md ol{margin-bottom:24px}#md ol{padding-left:15px}#md li{margin-bottom:16px}#md p{text-align:justify}#md img,#md p{margin-bottom:24px}#md img{border-radius:4px;box-shadow:0 0 20px rgba(0,0,0,.1),0 0 20px rgba(0,0,0,.1);width:100%}#md blockquote{background:#f9f9f9;border-left:10px solid #ccc;margin:24px 10px 24px 0;padding:16px 10px;quotes:"\201C""\201D""\2018""\2019"}#md blockquote:before{color:#ccc;content:open-quote;font-size:4em;line-height:.1em;margin-right:.25em;vertical-align:-.4em}#md blockquote p{display:inline}#md a{color:#36b}#md test{color:pink}#md deckgo-highlight-code{margin-bottom:24px;margin-top:24px}*{margin:0}.unresponsive-main,main{align-items:center;align-self:center;display:flex;flex-direction:column;font-family:-apple-system,Roboto,sans-serif,serif;justify-content:center;justify-self:center;margin:64px}.container,container{align-items:center;display:flex;flex-direction:column;justify-content:center;max-width:560px}.float{position:relative;transition:1s ease}.float:hover{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.profile-picture{margin-bottom:24px;width:240px}.heading{margin:0 0 24px;max-width:320px}.paragraph{color:#232129;font-size:1rem;margin-bottom:36px}.list{align-self:flex-start;justify-self:flex-start;margin-bottom:48px;padding-left:0}.list-item{font-size:1rem;font-weight:300;list-style:none;margin-bottom:30px;max-width:560px}.link{color:#36b;font-size:16px;vertical-align:5%}.doc{font-size:1rem;list-style-type:none;margin-bottom:24px}.description{color:#232129;font-size:1rem;line-height:1.25;margin-bottom:0;margin-top:10px}.badge{background-color:#088413;border:1px solid #088413;border-radius:4px;color:#fff;display:inline-block;font-size:11px;font-weight:700;letter-spacing:1;line-height:1;margin-left:10px;padding:4px 6px;position:relative;top:-3px}@media screen and (max-width:680px){main{margin:30px}}</style><meta name="generator" content="Gatsby 3.13.0"/><title data-react-helmet="true"></title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-30a9406352a134d3f016.js"/><link as="script" rel="preload" href="/framework-9c996b40222243a6384b.js"/><link as="script" rel="preload" href="/app-12486ff2451d5da9edc4.js"/><link as="script" rel="preload" href="/component---src-pages-blog-markdown-remark-frontmatter-path-js-243c2b72e1d57aad9090.js"/><link as="fetch" rel="preload" href="/page-data/blog/coding-the-self-balancing-binary-search-tree-avl-dev/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><main id="md"><div class="container"><a class="back" href="/">Back</a><h1 class="title">Coding the self balancing binary search tree (AVL)</h1><p class="date">Posted on <!-- -->September 16, 2021</p><div><h2>Description</h2>
+<p><img src="/./src/posts/7c5ad575abcc897fc667d2bf986cbc08/avl.jpg" alt="img">
+An AVL is a BST (Binary Search Tree) that balances itself. Such a tree is mainly used for archiving functionalities when data retrieval is prioritized over data manipulation. The worst case it will consume is <strong>O(log n)</strong> as it constantly rebalances itself; compared to a BST which will take O(n), assuming that you insert the items incrementally (e.g. 1 -> 2 -> 3 -> 4 …).
+<br>
+<br>
+In this blog, I will be coding a C++ console application that demonstrates how an AVL tree balances itself and display the different traversals step by step to understand how the AVL tree works.</p>
+<h2>Functionalities</h2>
+<ol>
+<li>Adding a node to the tree.</li>
+<li>Removing a node from the tree.</li>
+<li>Displaying path of a value in the tree.</li>
+<li>Displaying values in an ascending order.</li>
+<li>Displaying the value of the node given a position using level-by-level traversal.</li>
+<li>(Bonus) Displaying the tree in a 2D format in the console!</li>
+</ol>
+<p>The full source code can be found here.
+<br>
+<br>
+<a href="https://gist.github.com/rickkoh/e286114ef189cca283ab20d696d65f66"><a href="https://gist.github.com/rickkoh/e286114ef189cca283ab20d696d65f66">https://gist.github.com/rickkoh/e286114ef189cca283ab20d696d65f66</a></a>
+<br>
+<br>
+Alternatively you can live demo it here.
+<br>
+<br>
+<a href="https://onlinegdb.com/dQycYdSxb"><a href="https://onlinegdb.com/dQycYdSxb">https://onlinegdb.com/dQycYdSxb</a></a></p>
+<h2>Starting with Rotations</h2>
+<h3>Balanced or unbalanced</h3>
+<blockquote>
+<p>Not all BST are AVL but all AVL are BST. The difference is that an <strong>AVL is a balanced BST</strong> while a BST can be either balanced or unbalanced.</p>
+</blockquote>
+<p><img src="/./src/posts/bf3be37493b65609d45d636f73a7c46f/balanced-vs-unbalanced-dark.jpg" alt="img">
+To determine if the BST is balanced, we check whether the <strong>balance factor</strong> is more than 1 or less than -1, where the balance factor is = height of the left subtree - height of the right subtree.
+<br>
+<br>
+<img src="/./src/posts/191ec58917b1f8c65e57d13a57e3dd1c/balance-factor.jpg" alt="img">
+To calculate the height of the tree, we use a recursion function to iterate through each layer of the tree. The base case will be if the node is NULL which indicates that it has reached the bottom of the tree.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">int balanceFactor(BinaryNode* t)
+{
+    if (t != NULL)
+        return getHeight(t-&gt;left) - getHeight(t-&gt;right);
+    else
+        return 0;
+}
+
+int getHeight()
+{
+    return getHeight(root);
+}
+int getHeight(BinaryNode* t)
+{
+    if (t == NULL)
+        return 0;
+    else
+    {
+        int leftHeight = getHeight(t-&gt;left);
+        int rightHeight = getHeight(t-&gt;right);
+        if (leftHeight &gt; rightHeight)
+            return leftHeight + 1;
+        else
+            return rightHeight + 1;
+    }
+}</code>
+        </deckgo-highlight-code>
+<h3>The 4 different rotations</h3>
+<p><strong>Left Rotation</strong> Starting with the Left Rotation. This rotation is required when the right subtree is heavier than the left subtree. To execute the Left Rotation, it moves every node from the right to the left.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">1                    2
+  \                /   \
+    2      =&gt;    1       3
+      \
+        3
+
+BinaryNode* rotateLeft(BinaryNode* &amp;t)
+{
+    BinaryNode* tempNode = t-&gt;right;
+    t-&gt;right = tempNode-&gt;left;
+    tempNode-&gt;left = t;
+    return tempNode;
+}</code>
+        </deckgo-highlight-code>
+<p><strong>Right Rotation</strong> The second type of rotation is the Right Rotation. This rotation is similar to the Left Rotation but is required when the left subtree is heavier than the right subtree. To execute the Right Rotation, it moves every node from the left to the right.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">        3            2
+      /            /   \
+    2      =&gt;    1       3
+  /    
+1        
+
+BinaryNode* rotateRight(BinaryNode* &amp;t)
+{
+    BinaryNode* tempNode = t-&gt;left;
+    t-&gt;left = tempNode-&gt;right;
+    tempNode-&gt;right = t;
+    return tempNode;
+}</code>
+        </deckgo-highlight-code>
+<p><strong>Left Right Rotation</strong> The third type of rotation is the Left Right Rotation. This rotation occurs when the left node is heavier than the right node with the addition that left node's right subtree is heavier than left node's left subtree. To execute the Left Right Rotation, it first performs a Left Rotation and followed by a Right Rotation.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">      5                       3
+    /   \                   /   \
+  2       6      =&gt;       2       5
+ /  \                   /        /  \    
+1     3               1        4      6     
+        \                              
+          4                              
+
+BinaryNode* rotateLeftRight(BinaryNode* &amp;t)
+{
+    BinaryNode* tempNode = t-&gt;left;
+    t-&gt;left = rotateLeft(tempNode);
+    return rotateRight(t);
+}</code>
+        </deckgo-highlight-code>
+<p><strong>Right Left Rotation</strong> The last type of rotation is the Right Left Rotation. This rotation occurs when the right node is heavier than the left node with the addition that the right node's left subtree is heavier than the right node's right subtree. To execute the Right Left Rotation, it first performs a Right Rotation followed by a Left Rotation.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">     2                       4
+   /   \                   /   \
+ 1       5      =&gt;       2       5
+        / \            /   \       \
+      4     6        1       3       6
+     /       
+    3         
+
+BinaryNode* rotateRightLeft(BinaryNode* &amp;t)
+{
+    BinaryNode* tempNode = t-&gt;right;
+    t-&gt;right = rotateRight(tempNode);
+    return rotateLeft(t);
+}</code>
+        </deckgo-highlight-code>
+<h3>Balance</h3>
+<p>To recap the different cases for each rotation
+<br>
+<br>
+<strong>Right heavy</strong> = Left Rotation (L)
+<br>
+<br>
+<strong>Left heavy</strong> = Right Rotation (R)
+<br>
+<br>
+<strong>Left heavy with a heavier right subtree</strong> = Left Right Rotation (LR)
+<br>
+<br>
+<strong>Right heavy with a heavier left subtree</strong> = Right Left Rotation (RL)</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">BinaryNode* balance(BinaryNode* &amp;t)
+{
+    if (root == NULL)
+        return NULL;
+    else if (balanceFactor(t) == 2)              // left heavy
+    {
+        if (balanceFactor(t-&gt;left) &lt;= -1)        // right subtree heavier
+        {
+            cout &lt;&lt; &quot;Left Right Rotated&quot; &lt;&lt; endl;
+            t = rotateLeftRight(t);
+        }
+        else
+        {
+            cout &lt;&lt; &quot;Right Rotated&quot; &lt;&lt; endl;
+            t = rotateRight(t);
+        }
+    }
+    else if (balanceFactor(t) == -2)             // right heavy
+    {
+        if (balanceFactor(t-&gt;right) &gt;= 1)        // left subtree heavier
+        {
+            cout &lt;&lt; &quot;Right Left Rotated&quot; &lt;&lt; endl;
+            t = rotateRightLeft(t);
+        }
+        else
+        {
+            cout &lt;&lt; &quot;Left Rotated&quot; &lt;&lt; endl;
+            t = rotateLeft(t);
+        }
+    }
+    return NULL;
+}</code>
+        </deckgo-highlight-code>
+<h2>Insertion</h2>
+<p>The insertion function will be using recursion as the tree has to balance itself upon insertion. The base case for this function is (1) if the node is NULL or (2) if the item is found. If the node is NULL, that means that the item does not exist within the tree, hence we will create a new node with the new value and replace the NULL node with the new node. If the node is found, it will print “Item already exists”.
+<br>
+<br>
+For the recursion, it traverses down the tree either to the left (item smaller than node’s item) or to the right (item larger than node’s item) until it reaches the base case. Once it hits the base case, it traces back and balances the tree.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">void insert(ItemType item)
+{
+    insert(root, item);
+}
+void insert(BinaryNode* &amp;t, ItemType item)
+{
+    if (t == NULL)
+    {
+        BinaryNode *newNode = new BinaryNode;
+        newNode-&gt;item = item;
+        newNode-&gt;left = NULL;
+        newNode-&gt;right = NULL;
+        t = newNode;
+        cout &lt;&lt; &quot;Item added successfully.&quot; &lt;&lt; endl;
+    }
+    else
+        if (item &lt; t-&gt;item)
+            insert(t-&gt;left, item);
+        else if (item &gt; t-&gt;item)
+            insert(t-&gt;right, item);
+        else
+            cout &lt;&lt; &quot;Item already exists.&quot; &lt;&lt; endl;
+    balance(t);
+}</code>
+        </deckgo-highlight-code>
+<p>The code optimization for this function is O(logN), as every time it traverses, the number of items it needs to compare is divided by half.</p>
+<h2>Deletion</h2>
+<p>The deletion function will be using recursion as the tree has to balance itself upon deletion. The base case for this function is (1) if the target node is found or (2) if the target node cannot be found.
+<br>
+<br>
+<strong>Case 1 (node doesn’t exist)</strong>
+If the node does not exist, we will just print “Item does not exist.”.
+<br>
+<br>
+<strong>Case 2 (no children)</strong>
+We can identify whether it has any children by checking if the left and right of the current node is NULL. Once identified, we will set the parent left or right node to NULL with respect to whether it is a left or right child. Else if the node is root, we will set the root to NULL directly.
+<br>
+<br>
+<strong>Case 3 (one child)</strong>
+We can identify whether it only has one child by checking if one of its children is NULL. Once identified, we will set the parent’s right or left node to its child node respectively.
+<br>
+<br>
+<strong>Case 4 (two children)</strong>
+The third case is if the node has two children. To do that, we will need to find a successor to replace the current node. The successor will be the next biggest value closest to the current node. Once the successor has been found, we will replace the value of the current node with the successor’s value and then delete the original successor node.
+<br>
+<br>
+<strong>Case 5 (hasn’t reached the bottom)</strong>
+If we haven’t reached the bottom, we will continue to traverse down the tree by iterating the function. The bottom can be identified if the node is == NULL, as that means there are nodes for us to compare.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">void remove(ItemType target)
+{
+    remove(root, target, NULL, false);
+}
+void remove(BinaryNode* &amp;t, ItemType target, BinaryNode* parent, bool isLeftChild)
+{
+    if (t == NULL)                                      // base case
+    {
+        cout &lt;&lt; &quot;Item does not exist.&quot; &lt;&lt; endl;
+    }
+    else if (target == t-&gt; item) {
+        if (t-&gt;left == NULL &amp;&amp; t-&gt;right == NULL) {      // its a leaf
+            if (t == root)
+                root = NULL;
+            else
+                if (isLeftChild)
+                    parent-&gt;left = NULL;
+                else
+                    parent-&gt;right = NULL;
+        }
+        else if (t-&gt;left == NULL) {                     // has right leaf
+            if (t == root)
+                t = t-&gt;right;
+            else if (isLeftChild)
+                parent-&gt;left = t-&gt;right;
+            else
+                parent-&gt;right = t-&gt;right;
+        }
+        else if (t-&gt;right == NULL) {                    // has left leaf
+            cout &lt;&lt; isLeftChild &lt;&lt; endl;
+            if (t == root)
+                t = t-&gt;left;
+            else if (isLeftChild)
+                parent-&gt;left = t-&gt;left;
+            else
+                parent-&gt;right = t-&gt;left;
+        }
+        else {                                          // has two leafs
+            BinaryNode* temp = t;
+            BinaryNode* successor = t-&gt;left;
+            while (successor-&gt;right != NULL)
+                successor = successor-&gt;right;
+            int n = successor-&gt;item;
+            remove(t, n, NULL, true);
+            temp-&gt;item = n;
+        }
+        cout &lt;&lt; &quot;Item removed successfully.&quot; &lt;&lt; endl;
+    }
+    else {
+        if (target &lt; t-&gt;item) {
+            remove(t-&gt;left, target, t, true);
+        } else {
+            remove(t-&gt;right, target, t, false);
+        }
+    }
+    balance(t);
+}</code>
+        </deckgo-highlight-code>
+<h2>Display path of a value in the tree</h2>
+<p><img src="/./src/posts/ae94d6fd8d6238dfeb65c5cffb9e98f5/find-node.jpg" alt="img">
+This function will be using recursion as well as we will be traversing down the tree layer by layer to search for the value.</p>
+<p>The base case of this function will be if the item is found or if we reached the base of the tree. If not, we will continue to traverse down the tree by comparing  if the value we are searching for is greater or lesser than the current node’s value.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">string displayPathOfValue(ItemType target)
+{
+    string route;
+    route = &quot;Root &quot;;
+    return displayPathOfValue(root, target, route);
+}
+string displayPathOfValue(BinaryNode* t, ItemType target, string route)
+{
+    if (t == NULL)
+        return route + &quot;not found&quot;;
+    else if (t-&gt;item == target)
+        return route + to_string(t-&gt;item) + &quot; found&quot;;
+    else {
+        if (target &lt; t-&gt;item)
+        {
+            route += to_string(t-&gt;item) + &quot; L &quot;;
+            return displayPathOfValue(t-&gt;left, target, route);
+        }
+        else
+        { 
+            route += to_string(t-&gt;item) + &quot; R &quot;;
+            return displayPathOfValue(t-&gt;right, target, route);
+        }
+    }
+}</code>
+        </deckgo-highlight-code>
+<h2>Displaying values in an ascending order</h2>
+<p>To display the values in an ascending order, we will want to display the values starting from the bottom left, followed by its immediate parent, and then repeat from left to right until all the values are displayed.</p>
+<p>There will be no base case as the function is tail recursive. The condition to stop the function is if the node it is checking is NULL.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">void displayInAscending() {
+    if (isEmpty())
+        cout &lt;&lt; &quot;No item found&quot; &lt;&lt; endl;
+    else
+        displayInAscending(root);
+}
+void displayInAscending(BinaryNode* t) {
+    if (t != NULL) {
+        displayInAscending(t-&gt;left);
+        cout &lt;&lt; t-&gt;item &lt;&lt; endl;
+        displayInAscending(t-&gt;right);
+    }
+}</code>
+        </deckgo-highlight-code>
+<h2>Displaying the value of the node given a position using level-by-level traversal</h2>
+<p>For this function we will be leveraging <a href="">Queue</a> as we will want to traverse through the layers of the tree, starting from the top (root), and then down the layers from the left to right using the FIFO method. The position, otherwise known as counter, will decrease by 1 for each traversal we take, hence finding the value of the node given a position.
+<br>
+<br>
+The base case will be (1) if the node is null, that means we have traversed through their entire tree and the counter hasn’t finished counting, or (2) if the counter reaches 0, which means we have found the position we are looking for, hence we return the value.
+<br>
+<br>
+After checking each value, we will enqueue the left and right node (in this order) and then dequeue the front node as we have already traversed it.</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">int getValueofPosition(int counter)
+{
+    Queue q;
+    q.enqueue(root);
+    return getValueofPosition(q, counter-1);
+}
+int getValueofPosition(Queue q, int counter)
+{
+    BinaryNode* parent = q.getFront();
+    if (parent == NULL)
+    {
+        return 0;
+    }
+    if (counter == 0)
+        return parent-&gt;item;
+    else
+    {
+        if (parent-&gt;left != NULL)
+            q.enqueue(parent-&gt;left);
+        if (parent-&gt;right != NULL)
+            q.enqueue(parent-&gt;right);
+        q.dequeue();
+        counter--;
+        return getValueofPosition(q, counter);
+    }
+}</code>
+        </deckgo-highlight-code>
+<h2>Displaying the tree in a 2D format</h2>
+<p>The end result we want to achieve is to print the tree in a 2D format.</p>
+<p>First we need to determine the amount of space required to print on the left and right side of the node. As we can see, the amount of space we require to print is divided by half every time we travel down the tree. If we reverse this logic, the number of spaces we require to print everytime we travel up would double.</p>
+<p>Hence, we can derive that the amount of space required = 2 ^ height-1.
+We minus 1 from the height as we want to start our count from 0.</p>
+<p>For example,
+<br>
+<br>
+Height = 1, Spaces = 2 ^ (0) = 1
+<br>
+<br>
+Height = 4, Spaces = 2 ^ (4-1) = 2
+<br>
+<br>
+Height = 3, Spaces = 2 ^ (3-1) = 4
+<br>
+<br>
+Height = 4, Spaces = 2 ^ (4-1) = 8</p>
+<p>Additionally, some digits would require more space. For example any number that comprises 2 digits (such as ‘14’) would require 2 spaces while single digit numbers (such as ‘3’) would require only 1 space. To overcome this, we can determine the number of spaces to push back using the formula log10(x), where x is = value of digit.</p>
+<p>log10(1) = 0
+<br>
+<br>
+log10(10) = 1
+<br>
+<br>
+log10(100) = 2</p>
+<p>To print the tree, we will print from the top to the bottom. To print each layer, we will use a for loop and determine the amount of space and parse that value to the next function which will print the level.
+<br>
+<br>
+<strong>Base case</strong> If we have reached the target level, we will print the values followed by the number of spaces
+<br>
+<br>
+<strong>If not</strong> We will parse the value and iterate to the next level</p>
+<deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
+          <code slot="code">void printTree()
+{
+    // print level by level
+    for (int level = 0; level &lt; getHeight(root); level++)
+    {
+        printLevel(level);
+        cout &lt;&lt; endl;
+    }
+}
+void printLevel(int target)
+{
+    BinaryNode* tempNode = root;								
+    // calculate space
+    int space = pow(2, getHeight(root) - target);
+    cout &lt;&lt; setw(space);
+    printLevel(tempNode, target, space);
+}
+void printLevel(BinaryNode* t, int target, int space)		
+{
+    int spaces = 2 * space;
+    if (target == 0)
+        if (t == NULL)
+            cout &lt;&lt; &quot; &quot; &lt;&lt; setw(spaces - 1) &lt;&lt; &quot;&quot;;
+        else
+        {
+            // take account some digits require more space
+            int pushedback = ((t-&gt;item &lt;= 1) ? 1 : log10(t-&gt;item) + 1);	
+            cout &lt;&lt; &quot; &quot; &lt;&lt; t-&gt;item &lt;&lt; &quot; &quot;;
+            cout &lt;&lt; setw(spaces - pushedback - 2) &lt;&lt; &quot;&quot;;
+        }
+    else {
+        if (t == NULL &amp;&amp; target &gt;= 1)
+        {
+            printLevel(NULL, target - 1, space);
+            printLevel(NULL, target - 1, space);
+        }
+        else
+        {
+            printLevel(t-&gt;left, target - 1, space);
+            printLevel(t-&gt;right, target - 1, space);
+        }
+    }
+}</code>
+        </deckgo-highlight-code>
+<h3>Done</h3>
+<p><img src="/./src/posts/d97b88e01c33b2b05856f38efe885493/done.jpg" alt="img">
+The full source code can be found here
+<br>
+<br>
+<a href="https://gist.github.com/rickkoh/e286114ef189cca283ab20d696d65f66"><a href="https://gist.github.com/rickkoh/e286114ef189cca283ab20d696d65f66">https://gist.github.com/rickkoh/e286114ef189cca283ab20d696d65f66</a></a>
+<br>
+<br>
+Alternatively you can live demo it here
+<br>
+<br>
+<a href="https://onlinegdb.com/dQycYdSxb"><a href="https://onlinegdb.com/dQycYdSxb">https://onlinegdb.com/dQycYdSxb</a></a>
+<br>
+<br>
+- Rick</p></div></div></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/coding-the-self-balancing-binary-search-tree-avl-dev/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-faf791a4caa41358ff53.js"],"app":["/app-12486ff2451d5da9edc4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-82d0ca0b1a0f3a0eac6f.js"],"component---src-pages-blog-markdown-remark-frontmatter-path-js":["/component---src-pages-blog-markdown-remark-frontmatter-path-js-243c2b72e1d57aad9090.js"],"component---src-pages-index-js":["/component---src-pages-index-js-dd4e92a043ac0d908b23.js"]};/*]]>*/</script><script src="/polyfill-faf791a4caa41358ff53.js" nomodule=""></script><script src="/component---src-pages-blog-markdown-remark-frontmatter-path-js-243c2b72e1d57aad9090.js" async=""></script><script src="/app-12486ff2451d5da9edc4.js" async=""></script><script src="/framework-9c996b40222243a6384b.js" async=""></script><script src="/webpack-runtime-30a9406352a134d3f016.js" async=""></script></body></html>
