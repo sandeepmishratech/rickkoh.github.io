@@ -28,12 +28,12 @@ Alternatively you can live demo it here.
 <blockquote>
 <p>Not all BST are AVL but all AVL are BST. The difference is that an <strong>AVL is a balanced BST</strong> while a BST can be either balanced or unbalanced.</p>
 </blockquote>
-<p><img src="/./src/posts/bf3be37493b65609d45d636f73a7c46f/balanced-vs-unbalanced-dark.jpg" alt="img">
+<p><img src="/./src/posts/bf3be37493b65609d45d636f73a7c46f/balanced-vs-unbalanced.jpg" alt="img">
 To determine if the BST is balanced, we check whether the <strong>balance factor</strong> is more than 1 or less than -1, where the balance factor is = height of the left subtree - height of the right subtree.
 <br>
 <br>
 <img src="/./src/posts/191ec58917b1f8c65e57d13a57e3dd1c/balance-factor.jpg" alt="img">
-To calculate the height of the tree, we use a recursion function to iterate through each layer of the tree. The base case will be if the node is NULL which indicates that it has reached the bottom of the tree.</p>
+To calculate the height of the tree, we use a recursion function to iterate through each layer of the tree. The base case is if the node is NULL which indicates that it has reached the bottom of the tree.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">int balanceFactor(BinaryNode* t)
 {
@@ -95,7 +95,7 @@ BinaryNode* rotateRight(BinaryNode* &amp;t)
     return tempNode;
 }</code>
         </deckgo-highlight-code>
-<p><strong>Left Right Rotation</strong> The third type of rotation is the Left Right Rotation. This rotation occurs when the left node is heavier than the right node with the addition that left node's right subtree is heavier than left node's left subtree. To execute the Left Right Rotation, it first performs a Left Rotation and followed by a Right Rotation.</p>
+<p><strong>Left Right Rotation</strong> The third type of rotation is the Left Right Rotation. This rotation will occur when the left node is heavier than the right node with the addition that left node's right subtree is heavier than left node's left subtree. To execute the Left Right Rotation, it will perform a Left Rotation and followed by a Right Rotation.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">      5                       3
     /   \                   /   \
@@ -112,7 +112,7 @@ BinaryNode* rotateLeftRight(BinaryNode* &amp;t)
     return rotateRight(t);
 }</code>
         </deckgo-highlight-code>
-<p><strong>Right Left Rotation</strong> The last type of rotation is the Right Left Rotation. This rotation occurs when the right node is heavier than the left node with the addition that the right node's left subtree is heavier than the right node's right subtree. To execute the Right Left Rotation, it first performs a Right Rotation followed by a Left Rotation.</p>
+<p><strong>Right Left Rotation</strong> The last type of rotation is the Right Left Rotation. This rotation will occur when the right node is heavier than the left node with the addition that the right node's left subtree is heavier than the right node's right subtree. To execute the Right Left Rotation, it will perform a Right Rotation followed by a Left Rotation.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">     2                       4
    /   \                   /   \
@@ -178,10 +178,10 @@ BinaryNode* rotateRightLeft(BinaryNode* &amp;t)
 }</code>
         </deckgo-highlight-code>
 <h2>Insertion</h2>
-<p>The insertion function will be using recursion as the tree has to balance itself upon insertion. The base case for this function is (1) if the node is NULL or (2) if the item is found. If the node is NULL, that means that the item does not exist within the tree, hence we will create a new node with the new value and replace the NULL node with the new node. If the node is found, it will print “Item already exists”.
+<p>The insertion function will be using recursion as the tree has to trace back and balance itself upon insertion. The base case for this function is (1) if the node is NULL or (2) if the item is found. If the node is NULL, that means that the item does not exist within the tree, hence we will create a new node with the new value and replace the NULL node with the new node. If the node is found, it will print “Item already exists”.
 <br>
 <br>
-For the recursion, it traverses down the tree either to the left (item smaller than node’s item) or to the right (item larger than node’s item) until it reaches the base case. Once it hits the base case, it traces back and balances the tree.</p>
+For the recursion, it will traverse down the tree either to the left (item smaller than node’s item) or to the right (item larger than node’s item) until it reaches the base case. Once it is at the base case, it will trace back and balance the tree.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">void insert(ItemType item)
 {
@@ -210,11 +210,11 @@ void insert(BinaryNode* &amp;t, ItemType item)
         </deckgo-highlight-code>
 <p>The code optimization for this function is O(logN), as every time it traverses, the number of items it needs to compare is divided by half.</p>
 <h2>Deletion</h2>
-<p>The deletion function will be using recursion as the tree has to balance itself upon deletion. The base case for this function is (1) if the target node is found or (2) if the target node cannot be found.
+<p>The deletion function will be using recursion as the tree has trace back and balance itself upon deletion. The base case for this function is (1) if the target node is found or (2) if the target node cannot be found.
 <br>
 <br>
 <strong>Case 1 (node doesn’t exist)</strong>
-If the node does not exist, we will just print “Item does not exist.”.
+If the node does not exist, we will print “Item does not exist.”.
 <br>
 <br>
 <strong>Case 2 (no children)</strong>
@@ -230,7 +230,7 @@ The third case is if the node has two children. To do that, we will need to find
 <br>
 <br>
 <strong>Case 5 (hasn’t reached the bottom)</strong>
-If we haven’t reached the bottom, we will continue to traverse down the tree by iterating the function. The bottom can be identified if the node is == NULL, as that means there are nodes for us to compare.</p>
+If we haven’t reached the bottom, we will continue to traverse down the tree by iterating the function. The bottom can be identified if the node is == NULL, as that means that there are more nodes to compare.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">void remove(ItemType target)
 {
@@ -293,7 +293,7 @@ void remove(BinaryNode* &amp;t, ItemType target, BinaryNode* parent, bool isLeft
 <h2>Display path of a value in the tree</h2>
 <p><img src="/./src/posts/ae94d6fd8d6238dfeb65c5cffb9e98f5/find-node.jpg" alt="img">
 This function will be using recursion as well as we will be traversing down the tree layer by layer to search for the value.</p>
-<p>The base case of this function will be if the item is found or if we reached the base of the tree. If not, we will continue to traverse down the tree by comparing  if the value we are searching for is greater or lesser than the current node’s value.</p>
+<p>The base case of this function will be (1) if the item is found or (2) if we reached the bottom of the tree. If not, we will continue to traverse down the tree by comparing  if the value we are searching for is greater or lesser than the current node’s value.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">string displayPathOfValue(ItemType target)
 {
@@ -322,8 +322,8 @@ string displayPathOfValue(BinaryNode* t, ItemType target, string route)
 }</code>
         </deckgo-highlight-code>
 <h2>Displaying values in an ascending order</h2>
-<p>To display the values in an ascending order, we will want to display the values starting from the bottom left, followed by its immediate parent, and then repeat from left to right until all the values are displayed.</p>
-<p>There will be no base case as the function is tail recursive. The condition to stop the function is if the node it is checking is NULL.</p>
+<p>To display the values in an ascending order, we will want to display the values starting from the bottom left, followed by its immediate parent, and then repeat from the left to the right until all the values are displayed.</p>
+<p>There will be no base case for this function as it is tail recursive. The condition to stop the function is if the node it checks is NULL.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">void displayInAscending() {
     if (isEmpty())
@@ -340,13 +340,13 @@ void displayInAscending(BinaryNode* t) {
 }</code>
         </deckgo-highlight-code>
 <h2>Displaying the value of the node given a position using level-by-level traversal</h2>
-<p>For this function we will be leveraging <a href="">Queue</a> as we will want to traverse through the layers of the tree, starting from the top (root), and then down the layers from the left to right using the FIFO method. The position, otherwise known as counter, will decrease by 1 for each traversal we take, hence finding the value of the node given a position.
+<p>For this function we will leverage on <a href="https://www.geeksforgeeks.org/queue-data-structure/">Queue</a> to traverse thorugh the nodes level by level, starting from the top (root), and then traverse down layer by layer, from the left to the right using the FIFO method. The position, otherwise known as counter, will decrease by 1 for each traversal we take, hence finding the value of the node given a position.
 <br>
 <br>
 The base case will be (1) if the node is null, that means we have traversed through their entire tree and the counter hasn’t finished counting, or (2) if the counter reaches 0, which means we have found the position we are looking for, hence we return the value.
 <br>
 <br>
-After checking each value, we will enqueue the left and right node (in this order) and then dequeue the front node as we have already traversed it.</p>
+After checking each value, we will enqueue the left and right node respectively and then dequeue the front node after traversing it.</p>
 <deckgo-highlight-code language="cpp" terminal="carbon" theme="blackboard"  >
           <code slot="code">int getValueofPosition(int counter)
 {
@@ -376,17 +376,18 @@ int getValueofPosition(Queue q, int counter)
 }</code>
         </deckgo-highlight-code>
 <h2>Displaying the tree in a 2D format</h2>
-<p>The end result we want to achieve is to print the tree in a 2D format.</p>
-<p>First we need to determine the amount of space required to print on the left and right side of the node. As we can see, the amount of space we require to print is divided by half every time we travel down the tree. If we reverse this logic, the number of spaces we require to print everytime we travel up would double.</p>
+<p>To print the tree in a 2D format, we need to determine the amount of space required to print on the left and right side of the node.</p>
+<p><img src="/./src/posts/4afd0a9a0bae9a73d7be4f74ee197bb5/pyramid.jpg" alt="img">
+From the image, we can see that the amount of space we require to print is divided by half every time we travel down the tree. If we reverse it, the number of spaces we require to print everytime we travel up would double.</p>
 <p>Hence, we can derive that the amount of space required = 2 ^ height-1.
 We minus 1 from the height as we want to start our count from 0.</p>
 <p>For example,
 <br>
 <br>
-Height = 1, Spaces = 2 ^ (0) = 1
+Height = 1, Spaces = 2 ^ (1-1) = 1
 <br>
 <br>
-Height = 4, Spaces = 2 ^ (4-1) = 2
+Height = 2, Spaces = 2 ^ (2-1) = 2
 <br>
 <br>
 Height = 3, Spaces = 2 ^ (3-1) = 4
